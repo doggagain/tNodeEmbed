@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-setup(name='t_node_embed',
+setup(name='tnodeembed',
       version = '0.0.1',
       description = 'time based node embedding',
       author = 'urielsinger',
