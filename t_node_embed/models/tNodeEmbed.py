@@ -10,11 +10,11 @@ from scipy.linalg import orthogonal_procrustes
 from keras.layers import Input, LSTM, Dense, Activation, Concatenate, Lambda
 from keras.models import Model
 
-import loader
-from models.task_model import TaskModel
-from utils.graph_utils import get_graph_T, get_pivot_time, get_graph_times, multigraph2graph
-from utils.general_utils import load_object, save_object
-from utils.consts import TLP, NC
+from ..loader import load_task
+from ..models.task_model import TaskModel
+from ..utils.graph_utils import get_graph_T, get_pivot_time, get_graph_times, multigraph2graph
+from ..utils.general_utils import load_object, save_object
+from ..utils.consts import TLP, NC
 
 class tNodeEmbed(TaskModel):
     def __init__(self, graph_nx, task, dump_folder, test_size=0, align=True, **n2vargs):
@@ -67,7 +67,7 @@ class tNodeEmbed(TaskModel):
         if os.path.exists(task_data_path):
             X, y = load_object(task_data_path)
         else:
-            X, y = loader.load_task(self.graph_nx, self.task, train_skip=1, pivot_time=self.pivot_time,
+            X, y = load_task(self.graph_nx, self.task, train_skip=1, pivot_time=self.pivot_time,
                                     test_size=self.test_size)
             save_object((X, y), task_data_path)
 

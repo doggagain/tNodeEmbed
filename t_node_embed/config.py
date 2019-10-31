@@ -1,7 +1,7 @@
 import platform
 from os.path import join
 from datetime import datetime
-from utils.consts import TLP, NC
+from .utils.consts import TLP, NC
 
 experiment_name = ''
 time_now = datetime.now().strftime('%y%m%d_%H%M%S')

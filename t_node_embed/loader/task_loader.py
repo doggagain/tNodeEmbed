@@ -2,8 +2,8 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 
-from utils.graph_utils import random_false_edges, get_graph_T, multigraph2graph
-from utils.consts import TLP, NC
+from ..utils.graph_utils import random_false_edges, get_graph_T, multigraph2graph
+from ..utils.consts import TLP, NC
 
 def load_task(graph_nx, task, train_skip=1, pivot_time=None, test_size=None):
     '''

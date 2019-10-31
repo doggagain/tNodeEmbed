@@ -2,8 +2,8 @@ import threading
 import numpy as np
 from math import ceil
 
-from utils import nodes2embeddings
-from utils.graph_utils import get_graph_T
+from ..utils import nodes2embeddings
+from ..utils.graph_utils import get_graph_T
 
 class threadsafe_iter:
     """

@@ -1,8 +1,8 @@
 from keras.layers import Input, Dense, Activation, Concatenate, Lambda
 from keras.models import Model
 
-from models.task_model import TaskModel
-from utils.consts import TLP, NC
+from ..models.task_model import TaskModel
+from ..utils.consts import TLP, NC
 
 class StaticModel(TaskModel):
     def __init__(self, task):
