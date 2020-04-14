@@ -6,6 +6,23 @@ import networkx as nx
 import pandas as pd
 
 
+def load_dataset_ppi(graph_path):
+    '''
+    This function is responsible of loading the PPI dataset as a graph, which is stored in graph_path.
+    Args:
+        graph_path: str - a csv file representing a graph
+    Returns:
+        graph_nx: networkx - graph of the dataset with all needed attributes
+    '''
+        
+    graph_df = pd.read_csv(graph_path, sep=',', usecols=['id1', 'id2', 'discovery date'])
+    graph_df = graph_df[~pd.isnull(graph_df['discovery date'])]
+    graph_df['time'] = graph_df['discovery date'].map(lambda x: eval(x).year)
+    graph_df.rename({'id1': 'from', 'id2': 'to'}, axis='columns', inplace=True)
+    graph_nx = nx.from_pandas_edgelist(graph_df, 'from', 'to', edge_attr=['time'], create_using=nx.Graph())
+    
+    return graph_nx
+
 
 def load_dataset(dataset_name):
     '''
